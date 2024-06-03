@@ -1,0 +1,18 @@
+{
+  "@vite/client": {
+    "prefetch": true,
+    "isEntry": true,
+    "file": "@vite/client",
+    "css": [],
+    "module": true,
+    "resourceType": "script"
+  },
+  "C:/77insa_vue/HR_nuxt_frontend-main/node_modules/.pnpm/nuxt@3.10.3_@types+node@20.11.20_eslint@8.57.0_sass@1.71.1_stylelint@15.10.3_typescript@5.3.3_vite@4.5.2/node_modules/nuxt/dist/app/entry.js": {
+    "resourceType": "script",
+    "module": true,
+    "prefetch": true,
+    "preload": true,
+    "isEntry": true,
+    "file": "C:/77insa_vue/HR_nuxt_frontend-main/node_modules/.pnpm/nuxt@3.10.3_@types+node@20.11.20_eslint@8.57.0_sass@1.71.1_stylelint@15.10.3_typescript@5.3.3_vite@4.5.2/node_modules/nuxt/dist/app/entry.js"
+  }
+}

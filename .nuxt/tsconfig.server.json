@@ -1,0 +1,77 @@
+{
+  "compilerOptions": {
+    "forceConsistentCasingInFileNames": true,
+    "strict": true,
+    "target": "ESNext",
+    "module": "ESNext",
+    "moduleResolution": "Bundler",
+    "allowJs": true,
+    "resolveJsonModule": true,
+    "jsx": "preserve",
+    "allowSyntheticDefaultImports": true,
+    "jsxFactory": "h",
+    "jsxFragmentFactory": "Fragment",
+    "paths": {
+      "#imports": [
+        "./types/nitro-imports"
+      ],
+      "#paths": [
+        "../node_modules/.pnpm/nuxt@3.10.3_@types+node@20.11.20_eslint@8.57.0_sass@1.71.1_stylelint@15.10.3_typescript@5.3.3_vite@4.5.2/node_modules/nuxt/dist/core/runtime/nitro/paths"
+      ],
+      "~": [
+        "./.."
+      ],
+      "~/*": [
+        "../*"
+      ],
+      "@": [
+        "./.."
+      ],
+      "@/*": [
+        "../*"
+      ],
+      "~~": [
+        "./.."
+      ],
+      "~~/*": [
+        "../*"
+      ],
+      "@@": [
+        "./.."
+      ],
+      "@@/*": [
+        "../*"
+      ],
+      "assets": [
+        "../assets"
+      ],
+      "assets/*": [
+        "../assets/*"
+      ],
+      "public": [
+        "../public"
+      ],
+      "public/*": [
+        "../public/*"
+      ],
+      "pinia": [
+        "../node_modules/.pnpm/pinia@2.1.7_typescript@5.3.3_vue@3.4.20/node_modules/pinia/dist/pinia"
+      ]
+    }
+  },
+  "include": [
+    "./types/nitro-nuxt.d.ts",
+    "../node_modules/.pnpm/@vueuse+nuxt@10.8.0_nuxt@3.10.3_vue@3.4.20/node_modules/@vueuse/nuxt/runtime/server",
+    "../node_modules/.pnpm/@nuxtjs+device@3.1.1/node_modules/@nuxtjs/device/runtime/server",
+    "../node_modules/.pnpm/@pinia+nuxt@0.5.1_typescript@5.3.3_vue@3.4.20/node_modules/@pinia/nuxt/runtime/server",
+    "../node_modules/.pnpm/@nuxt+telemetry@2.5.3/node_modules/@nuxt/telemetry/runtime/server",
+    "./types/nitro.d.ts",
+    "../**/*",
+    "../server/**/*"
+  ],
+  "exclude": [
+    "../node_modules",
+    "../node_modules/.pnpm/nuxt@3.10.3_@types+node@20.11.20_eslint@8.57.0_sass@1.71.1_stylelint@15.10.3_typescript@5.3.3_vite@4.5.2/node_modules/nuxt/node_modules",
+    "../dist"
+  ]
+}
