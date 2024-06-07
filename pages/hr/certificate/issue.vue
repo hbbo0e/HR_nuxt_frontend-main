@@ -81,7 +81,8 @@ const fetchData = async () => {
     return
   }
 
-  console.log(selectedEmpCode.value.empCode)
+  console.log(selectedEmpCode.value.empCode);
+
   await axios.get('http://localhost:8282/hr/certificate/selectCertificateList', {
     params: {
       empCode: selectedEmpCode.value.empCode, startDate: startDate.value, endDate: endDate.value,

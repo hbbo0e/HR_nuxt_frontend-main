@@ -70,7 +70,7 @@ export default [
         ],
       },
       {
-        title: '증명서 신청',
+        title: '증명서 관리',
         children: [
           {
             title: '증명서 조회/신청',

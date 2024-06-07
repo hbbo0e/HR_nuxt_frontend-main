@@ -17,4 +17,9 @@ function updateCertificateRequest(payload: any) {
   return hrApi.post(`${CERT_URL}/updateCertificate`, payload)
 }
 
+
+// 증명서 신청
+
+function 
+
 export { removeCertificateRequest, updateCertificateRequest }
