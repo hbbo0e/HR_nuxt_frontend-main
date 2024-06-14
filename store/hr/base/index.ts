@@ -327,6 +327,7 @@ export const baseStore = defineStore('baseStore', {
         alert('오류입니다.')
       }
     },
+    // 모달 열기
     SET_DIALOG(payload: any) {
       try {
         this.isDialog = payload
@@ -343,6 +344,8 @@ export const baseStore = defineStore('baseStore', {
         throw new Error(err)
       }
     },
+
+    // 선택한 휴일 리스트 조회
     SET_HOLIDAY_ROW(payload: any) {
       try {
         this.holidayRow = payload

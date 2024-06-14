@@ -19,13 +19,14 @@ const holidayList = computed(() => {
   return baseStore().holidayRow
 })
 
+
 const editHoliday = async () => {
   try {
     const editHolidayData = {
-      applyDay: holidayList.value.applyDay,
-      holidayName: holidayList.value.holidayName,
-      holidayType: holidayData.value.holidayType,
-      holidayCode: holidayData.value.holidayCode,
+      applyDay: holidayList.value.applyDay, // 적용일
+      holidayName: holidayList.value.holidayName, // 휴일 명칭
+      holidayType: holidayData.value.holidayType, // 휴일 타입
+      holidayCode: holidayData.value.holidayCode, // 휴일 타입에 따른 코드
     }
 
     console.log(editHolidayData)

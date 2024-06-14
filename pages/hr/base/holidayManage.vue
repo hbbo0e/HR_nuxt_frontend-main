@@ -3,12 +3,6 @@ import HolidayModal from '@/components/hr/base/holidayModal.vue';
 import { baseStore } from '@/store/hr/base';
 import { VDataTable } from 'vuetify/labs/VDataTable';
 
-const headers = [
-  { title: '날짜', key: 'applyDay' },
-  { title: '명칭', key: 'holidayName' },
-  { title: '종류', key: 'holidayType' },
-]
-
 const holidayData = ref('')
 const holidayName = ref('')
 const isDialogVisible = ref(false)
@@ -22,6 +16,14 @@ const monthList: any = ref([])
 const yearList: any = ref([])
 const holidayList: any = ref([])
 const tab = ref('personal-info')
+
+// 휴일 정보 관리 기본 테이블
+
+const headers = [
+  { title: '날짜', key: 'applyDay' },
+  { title: '명칭', key: 'holidayName' },
+  { title: '종류', key: 'holidayType' },
+]
 
 const fetchData = async () => {
   await baseStore().FETCH_MONTHLIST()
@@ -77,6 +79,8 @@ const holiday = [
 
 watch([selectedYear, selectedMonth], test, { immediate: true })
 
+// 가장 먼저 실행
+
 onBeforeMount(() => {
   fetchData()
 })
@@ -98,10 +102,10 @@ const addDept = async () => {
 const openModal = async row => {
   console.log(row.item)
 
-  // // 가져온 데이터를 store에 저장
+  // 가져온 데이터를 store에 저장
   baseStore().SET_HOLIDAY_ROW(row.item)
 
-  // // 모달 열기
+  // 모달 열기
   baseStore().SET_DIALOG(true)
 }
 </script>
