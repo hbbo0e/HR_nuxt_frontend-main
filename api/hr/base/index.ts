@@ -2,6 +2,7 @@ import { hrApi, sys } from '@/api'
 
 const BASE_URL = '/base'
 
+// ------------------------ 부서 ------------------------
 /**
  * deptList
  */
@@ -59,6 +60,8 @@ function selectCompanyList() {
 function selectWorkplaceList() {
   return hrApi.get(`${BASE_URL}/workplaceList`)
 }
+
+// ------------------------ 휴일 ------------------------
 
 /**
  * allHolidayList
@@ -133,6 +136,8 @@ function removeDept(payload: any) {
   })
 }
 
+// ------------------------ 프로젝트 ------------------------
+
 /**
  * 프로젝트 조회
  */
@@ -165,11 +170,19 @@ function removeProject(payload: any) {
   })
 }
 
+// ------------------------ 기준 근무시간 관리 ------------------------
+
+function selectBaseWorkTime() {
+  console.log('------ selectBaseWorkTime ------')
+
+  return hrApi.get(`${BASE_URL}/baseWorkTimeList`)
+}
+
 export {
   addDept, addHoliday, addProject, addPublicHoliday, findDeptManageList,
   modifyDept, modifyHoliday, modifyProject, removeDept, removeHoliday, removeProject, selectCompanyList, selectDeptList,
   selectDeptListDetail, selectHolidayList,
   selectHolidayType, selectMonthList,
   selectPositionList, selectProjectList, selectWorkplaceList,
-  selectYearList,
+  selectYearList, selectBaseWorkTime,
 }

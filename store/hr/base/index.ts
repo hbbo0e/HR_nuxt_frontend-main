@@ -5,8 +5,9 @@ import {
   addPublicHoliday, findDeptManageList, modifyDept,
   modifyHoliday,
   modifyProject, removeDept,
-  removeHoliday, removeProject, selectCompanyList, selectDeptList,
-  selectDeptListDetail, selectHolidayList, selectHolidayType, selectMonthList, selectPositionList, selectProjectList, selectWorkplaceList, selectYearList,
+  removeHoliday, removeProject, selectBaseWorkTime, selectCompanyList,
+  selectDeptList, selectDeptListDetail, selectHolidayList, selectHolidayType, selectMonthList, selectPositionList, selectProjectList, selectWorkplaceList,
+  selectYearList,
 } from '@/api/hr/base'
 
 export const baseStore = defineStore('baseStore', {
@@ -28,6 +29,8 @@ export const baseStore = defineStore('baseStore', {
     projectList: [],
     project: [],
     isDialogBtn: false,
+    baseWorktimeList : {},
+
   }),
   actions: {
     async FETCH_DEPTLIST() {
@@ -327,6 +330,7 @@ export const baseStore = defineStore('baseStore', {
         alert('오류입니다.')
       }
     },
+
     // 모달 열기
     SET_DIALOG(payload: any) {
       try {
@@ -399,6 +403,20 @@ export const baseStore = defineStore('baseStore', {
     SET_DIALOG_BTN(payload: any) {
       try {
         this.isDialogBtn = payload
+      }
+      catch (err: any) {
+        throw new Error(err)
+      }
+    },
+
+    // 기준근무시간관리 조회
+    async SEARCH_BASE_WORK_TIME() {
+      try {
+        const response = await selectBaseWorkTime()
+
+        console.log('------ response.data ------', response.data)
+        this.baseWorktimeList = response.data
+       // console.log('------ baseWorktimeList ------', this.baseWorktimeList)
       }
       catch (err: any) {
         throw new Error(err)

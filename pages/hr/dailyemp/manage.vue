@@ -150,6 +150,8 @@ const insertEmpList = async () => {
   }
 }
 
+// 일용직 사원 목록
+
 const filteredData = computed(() => {
   return dailyLaborEmpList.value.filter((emp: any) => {
     return Object.values(emp).some(field => {

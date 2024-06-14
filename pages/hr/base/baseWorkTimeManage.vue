@@ -1,6 +1,7 @@
 <script setup lang="ts">
-import axios from 'axios';
-import { VDataTable } from 'vuetify/labs/VDataTable';
+import axios from 'axios'
+import { VDataTable } from 'vuetify/labs/VDataTable'
+import { baseStore } from '@/store/hr/base'
 
 const headers = [
   { title: '현재년도', key: 'applyYear', width: 110 },
@@ -14,7 +15,7 @@ const headers = [
   { title: '저녁근무시간', key: 'dinnerStartTime', width: 140 },
 ]
 
-const base_worktime_list = ref([])
+const baseWorktimeList = ref([])
 const tab = ref('personal-info')
 
 onMounted(() => {
@@ -25,17 +26,35 @@ const fetchBaseWorkTime = async () => {
   try {
     const response = await axios.get('http://localhost:8282/hr/base/baseWorkTimeList')
 
-    base_worktime_list.value = response.data.gridRowJson
-    console.log('[baseWorkTime]', base_worktime_list.value)
+    console.log('----- response.data -----', response.data)
+    baseWorktimeList.value = response.data.gridRowJson
+    console.log('----- baseWorktimeList -----', baseWorktimeList)
+    console.log('[baseWorkTime]', baseWorktimeList.value)
   }
   catch (e) { console.error(e) }
 }
+
+// 미들웨어 적용
+// const fetchBaseWorkTime = async () => {
+//   try {
+//     await baseStore().SEARCH_BASE_WORK_TIME()
+//     console.log('----- baseStore.baseWorktimeList -----', baseStore.baseWorktimeList)
+//     baseWorktimeList.value = await baseStore.baseWorktimeList.gridRowJson
+
+//     console.log('----- baseWorktimeList.value -----', baseWorktimeList.value)
+//   }
+//   catch (e) {
+//     console.error(e)
+//   }
+// }
 </script>
 
 <template>
-  <h1 class="mb-6">기준근무시간관리</h1>
+  <h1 class="mb-6">
+    기준근무시간관리
+  </h1>
   <VCard>
-  <VTabs
+    <VTabs
       v-model="tab"
       height="70"
     >
@@ -46,7 +65,7 @@ const fetchBaseWorkTime = async () => {
   </VCard>
   <VDataTable
     :headers="headers"
-    :items="base_worktime_list"
+    :items="baseWorktimeList"
     :items-per-page="10"
     fixed-header
   />
