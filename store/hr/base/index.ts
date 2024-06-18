@@ -29,7 +29,7 @@ export const baseStore = defineStore('baseStore', {
     projectList: [],
     project: [],
     isDialogBtn: false,
-    baseWorktimeList : {},
+    baseWorktimeList: [] as any[],
 
   }),
   actions: {
@@ -414,9 +414,9 @@ export const baseStore = defineStore('baseStore', {
       try {
         const response = await selectBaseWorkTime()
 
-        console.log('------ response.data ------', response.data)
-        this.baseWorktimeList = response.data
-       // console.log('------ baseWorktimeList ------', this.baseWorktimeList)
+        console.log('------ response.data ------', response.data.gridRowJson)
+        this.baseWorktimeList = response.data.gridRowJson
+        console.log('------ baseWorktimeList ------', this.baseWorktimeList)
       }
       catch (err: any) {
         throw new Error(err)
