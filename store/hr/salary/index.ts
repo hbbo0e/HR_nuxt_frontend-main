@@ -1,13 +1,14 @@
-import {
-deleteBaseExtSal, deleteBaseSalary, deleteBonus, deleteMonthSalay,
-deleteSeverance, findBonus, findSalary,
-findSeverancePay, findTax, modifyBaseExtSalary,
-modifyBaseSalary, registerBaseExtSal, registerBaseSalary, registerBonus, registerSeverancePay,
-registerSocialInsure,
-salaryProcess, selectBaseExtSalary, selectBaseSalary,
-selectSalaryInit, selectSocialInsure, updateMonthSal,
-} from '@/api/hr/salary'
 import { defineStore } from 'pinia'
+import {
+  deleteBaseExtSal, deleteBaseSalary, deleteBonus,
+  deleteMonthSalay, deleteSeverance, findBonus,
+  findSalary, findSeverancePay, findTax,
+  modifyBaseExtSalary, modifyBaseSalary, registerBaseExtSal, registerBaseSalary, registerBonus,
+  registerSeverancePay,
+  registerSocialInsure, salaryProcess, selectBaseExtSalary,
+  selectBaseSalary, selectSalaryInit, selectSocialInsure,
+  updateMonthSal,
+} from '@/api/hr/salary'
 
 export const salaryStore = defineStore('salaryStore', {
   state: () => ({
@@ -320,6 +321,8 @@ export const salaryStore = defineStore('salaryStore', {
         throw new Error(err)
       }
     },
+
+
 
     // -------------------------------상여 및 성과급-------------------------------
     /**

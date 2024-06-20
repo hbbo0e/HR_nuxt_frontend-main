@@ -2,6 +2,7 @@
 import SalregMonthModal from '@/components/hr/salary/SalregMonthModal.vue'
 import { paginationMeta } from '@/server/utils/paginationMeta'
 import { baseStore } from '@/store/hr/base'
+import { restTemplateStore } from '@/store/hr/restTemplate'
 import { salaryStore } from '@/store/hr/salary'
 import { VDataTable } from 'vuetify/labs/VDataTable'
 
@@ -13,6 +14,10 @@ const selectedMonth = ref('')
 const initSalaryList: any = ref([])
 const monthList: any = ref([])
 const yearList: any = ref([])
+const monthDeductionData: any = ref({
+  empCode: '',
+  applyYearMonth: ''
+})
 
 const headers = [
   { title: '해당 년월', key: 'applyYearMonth', align: 'center' },
@@ -54,12 +59,12 @@ const handleRowClick = async row => {
     applyYearMonth: `${selectedYear.value}-${selectedMonth.value.trim()}`,
   }
 
-  const monthDeductionData = {
+  monthDeductionData.value = {
     empCode: row.item.empCode,
     applyYearMonth: `${selectedYear.value}-${selectedMonth.value.trim()}`,
   }
 
-  console.log(monthDeductionData)
+  console.log("----- monthDeductionData -----", monthDeductionData)
   if (row.item.finalizeStatus === 'N' || row.item.finalizeStatus === null) {
     await salaryStore().SALARY_PROCESS(salaryData)
 
@@ -86,6 +91,16 @@ const filteredData = computed(() => {
     })
   })
 })
+
+const approveSalary = async () => {
+
+   // monthDeductionData.value를 사용하여 필요한 작업 수행
+   
+  console.log("Using monthDeductionData in another function", monthDeductionData.value)
+
+    await restTemplateStore().APPROVE_SALARY(monthDeductionData)
+  
+}
 
 onBeforeMount(fetchData)
 watch([selectedYear, selectedMonth], fetchData2, { immediate: true })
@@ -140,10 +155,14 @@ watch([selectedYear, selectedMonth], fetchData2, { immediate: true })
             <p class="text-sm text-disabled mb-0">
               {{ paginationMeta({ page: options.page, itemsPerPage: options.itemsPerPage }, filteredData.length) }}
             </p>
-
             <VPagination v-model="options.page" :total-visible="$vuetify.display.smAndDown ? 3 : 5"
               :length="Math.ceil(filteredData.length / options.itemsPerPage)" />
           </div>
+          <VCol cols="12" sm="4">
+          <VBtn @click="approveSalary">
+            급여 승인
+          </VBtn>
+        </VCol>
         </VCardText>
       </template>
     </VDataTable>
