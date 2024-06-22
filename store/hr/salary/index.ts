@@ -238,14 +238,16 @@ export const salaryStore = defineStore('salaryStore', {
      */
     async SALARY_PROCESS(payload: any) {
       try {
-        console.log(payload)
+        console.log("------ SALARY_PROCESS.payload -----", payload)
 
         const response = await salaryProcess(payload)
         const responseData = response.data.salaryList.filter(item => item.empCode === payload.empCode)[0]
 
         this.salaryList = responseData
 
-        return response.data
+        console.log("------ SALARY_PROCESS.response -----", response.data.salaryList)
+
+        return response.data.salaryList
       }
       catch (err: any) {
         throw new Error(err)

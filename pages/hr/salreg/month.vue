@@ -62,9 +62,12 @@ const handleRowClick = async row => {
   monthDeductionData.value = {
     empCode: row.item.empCode,
     applyYearMonth: `${selectedYear.value}-${selectedMonth.value.trim()}`,
+    empName: row.item.empName,
+    realSalary: row.item.realSalary,
+    finalizeStatus: row.item.finalizeStatus,
   }
 
-  console.log("----- monthDeductionData -----", monthDeductionData)
+  console.log("----- monthDeductionData.value -----", monthDeductionData.value)
   if (row.item.finalizeStatus === 'N' || row.item.finalizeStatus === null) {
     await salaryStore().SALARY_PROCESS(salaryData)
 
@@ -76,7 +79,7 @@ const handleRowClick = async row => {
     await salaryStore().SALARY_PROCESS(salaryData)
 
     await salaryStore().FIND_TAX(monthDeductionData)
-    salaryStore().SET_DIALOG_BTN(false)
+    await salaryStore().SET_DIALOG_BTN(false)
   }
   await salaryStore().SET_DIALOG(true)
 }
@@ -96,9 +99,10 @@ const approveSalary = async () => {
 
    // monthDeductionData.value를 사용하여 필요한 작업 수행
    
-  console.log("Using monthDeductionData in another function", monthDeductionData.value)
+  console.log("----- approveSalary.value -----", monthDeductionData.value)
+  console.log("----- filteredData.value -----", filteredData.value)
 
-    await restTemplateStore().APPROVE_SALARY(monthDeductionData)
+    await restTemplateStore().APPROVE_SALARY(monthDeductionData.value)
   
 }
 
