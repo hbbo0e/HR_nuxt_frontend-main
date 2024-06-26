@@ -5,6 +5,9 @@ function createInstanceWithAuth(url: any) {
   const instance = axios.create({
     // baseURL: `${process.env.NUXT_PUBLIC_API_BASE_URL}${url}`,
     baseURL: `http://localhost:8282${url}`,
+    headers: {
+      'Content-Type': 'application/json'
+    }
   })
 
   return setInterceptors(instance)
